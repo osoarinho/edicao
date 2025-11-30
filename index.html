@@ -8,6 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Elfsight Google Reviews -->
+    <script src="https://elfsightcdn.com/platform.js" async></script>
     <script>
         tailwind.config = {
             theme: {
@@ -134,6 +136,26 @@
             border-color: rgba(255, 255, 255, 0.5);
             color: white;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Esconder "Free Google Reviews Widget" do Elfsight */
+        .elfsight-app-c85a5979-e427-4d08-9d3a-647b2e14c648 [class*="elfsight-widget"],
+        .elfsight-app-c85a5979-e427-4d08-9d3a-647b2e14c648 [class*="widget-branding"],
+        .elfsight-app-c85a5979-e427-4d08-9d3a-647b2e14c648 a[href*="elfsight"],
+        .elfsight-app-c85a5979-e427-4d08-9d3a-647b2e14c648 [class*="branding"],
+        .elfsight-app-c85a5979-e427-4d08-9d3a-647b2e14c648 [id*="branding"],
+        [class*="elfsight"] [class*="powered"],
+        [class*="elfsight"] [class*="free"],
+        [class*="elfsight"] [class*="widget-text"],
+        [class*="elfsight"] a[href*="elfsight.com"] {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            height: 0 !important;
+            width: 0 !important;
+            overflow: hidden !important;
+            position: absolute !important;
+            left: -9999px !important;
         }
         
         .reveal {
@@ -387,71 +409,39 @@
         </div>
     </section>
 
-    <!-- Testimonials Section - COMENTADO: Descomente quando houver depoimentos reais -->
-    <!--
-    <section class="py-20 md:py-32 bg-dark-800 relative" id="testimonials">
+    <!-- Depoimentos Section -->
+    <section id="depoimentos" class="py-20 md:py-32 bg-dark-800 relative">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16 reveal">
-                <p class="text-white font-semibold uppercase tracking-wider mb-4">Feedback</p>
-                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">O que dizem nossos clientes</h2>
-                <p class="text-dark-300 text-lg max-w-2xl mx-auto">
-                    Depoimentos de criadores de conteúdo, empresas e influenciadores que confiaram em nosso trabalho.
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">Depoimentos</h2>
+                <p class="text-dark-300 text-lg md:text-xl mb-8 max-w-3xl mx-auto">
+                    O que dizem as pessoas que já foram atendidas por mim e trabalharam comigo
                 </p>
-                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mt-6"></div>
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-8"></div>
+                <a href="https://share.google/tKvgYwdlS9tb5WQ2N" target="_blank" class="inline-flex items-center gap-2 text-dark-200 hover:text-white transition-colors text-sm md:text-base">
+                    <i class="fab fa-google"></i>
+                    Ver todos os depoimentos no Google
+                    <i class="fas fa-external-link-alt text-xs"></i>
+                </a>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <div class="max-w-7xl mx-auto">
+                <!-- Elfsight Google Reviews Widget -->
                 <div class="reveal">
-                    <div class="card-effect rounded-2xl p-8">
-                        <div class="text-4xl text-dark-400 mb-4">"</div>
-                        <p class="text-dark-200 italic mb-6 leading-relaxed">
-                            "Trabalho excepcional! A edição do meu vídeo ficou incrível e superou minhas expectativas. Entrega rápida e comunicação excelente."
-                        </p>
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center mr-4 text-white font-bold">MS</div>
-                            <div>
-                                <h4 class="text-white font-bold">Maria Silva</h4>
-                                <p class="text-dark-400 text-sm">Youtuber</p>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="elfsight-app-c85a5979-e427-4d08-9d3a-647b2e14c648" data-elfsight-app-lazy></div>
                 </div>
                 
-                <div class="reveal">
-                    <div class="card-effect rounded-2xl p-8">
-                        <div class="text-4xl text-dark-400 mb-4">"</div>
-                        <p class="text-dark-200 italic mb-6 leading-relaxed">
-                            "Profissionalismo e qualidade impressionantes. O Soarinho transformou nosso conteúdo corporativo, dando um ar mais profissional e engajador."
-                        </p>
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center mr-4 text-white font-bold">JS</div>
-                            <div>
-                                <h4 class="text-white font-bold">João Santos</h4>
-                                <p class="text-dark-400 text-sm">Empresário</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="reveal">
-                    <div class="card-effect rounded-2xl p-8">
-                        <div class="text-4xl text-dark-400 mb-4">"</div>
-                        <p class="text-dark-200 italic mb-6 leading-relaxed">
-                            "Edição impecável e atenção aos detalhes. Minha série de vídeos ganhou vida com o trabalho do Soarinho. Recomendo muito!"
-                        </p>
-                        <div class="flex items-center">
-                            <div class="w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center mr-4 text-white font-bold">AC</div>
-                            <div>
-                                <h4 class="text-white font-bold">Ana Costa</h4>
-                                <p class="text-dark-400 text-sm">Influencer</p>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Link para ver mais depoimentos -->
+                <div class="text-center mt-12 reveal">
+                    <a href="https://share.google/tKvgYwdlS9tb5WQ2N" target="_blank" class="inline-block btn-primary py-4 px-8 rounded-full font-semibold text-lg transition-all duration-300 hover:shadow-lg">
+                        <i class="fab fa-google mr-2"></i>
+                        Ver todos os depoimentos no Google
+                        <i class="fas fa-external-link-alt ml-2"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
-    -->
 
     <!-- Ecosystem Hub Section -->
     <section class="py-20 md:py-32 bg-dark-800 relative" id="ecosystem">
