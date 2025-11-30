@@ -655,37 +655,6 @@
             revealObserver.observe(reveal);
         });
 
-        // Remover elementos do Elfsight que contenham "Free Google Reviews Widget"
-        function removeElfsightBranding() {
-            const elfsightContainer = document.querySelector('.elfsight-app-c85a5979-e427-4d08-9d3a-647b2e14c648');
-            if (!elfsightContainer) return;
-            const allElements = elfsightContainer.querySelectorAll('*');
-            allElements.forEach(element => {
-                const text = element.textContent || element.innerText || '';
-                if (text.includes('Free Google Reviews Widget') || 
-                    text.includes('Free') && text.includes('Widget') ||
-                    element.href && element.href.includes('elfsight')) {
-                    element.style.display = 'none';
-                    element.style.visibility = 'hidden';
-                    element.style.opacity = '0';
-                    element.style.height = '0';
-                    element.style.width = '0';
-                    element.style.overflow = 'hidden';
-                    element.style.position = 'absolute';
-                    element.style.left = '-9999px';
-                    element.remove();
-                }
-            });
-            const elfsightLinks = elfsightContainer.querySelectorAll('a[href*="elfsight"]');
-            elfsightLinks.forEach(link => link.remove());
-        }
-        setTimeout(() => removeElfsightBranding(), 2000);
-        const depoimentosSection = document.getElementById('depoimentos');
-        if (depoimentosSection) {
-            const observer = new MutationObserver(() => removeElfsightBranding());
-            observer.observe(depoimentosSection, { childList: true, subtree: true });
-        }
-
         // Portfolio filter
         const filterButtons = document.querySelectorAll('.filter-btn');
         filterButtons.forEach(button => {
