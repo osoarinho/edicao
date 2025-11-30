@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editor Audiovisual Soarinho</title>
-    <link rel="icon" type="image/png" href="../marca-soarinho.png">
+    <link rel="icon" type="image/png" href="https://soarinho.com/identity/marca-soarinho.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -167,8 +167,8 @@
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center">
                 <a href="#" class="flex items-center gap-2">
-                    <img src="../marca-soarinho.png" alt="Marca Soarinho" class="h-6 w-auto opacity-80">
-                    <img src="../logo-soarinho.png" alt="Soarinho" class="h-8 w-auto">
+                    <img src="https://soarinho.com/identity/marca-soarinho.png" alt="Marca Soarinho" class="h-6 w-auto opacity-80">
+                    <img src="https://soarinho.com/identity/logo-soarinho.png" alt="Soarinho" class="h-8 w-auto">
                 </a>
                 <button id="mobile-menu-btn" class="md:hidden text-white">
                     <i class="fas fa-bars text-xl"></i>
@@ -454,6 +454,73 @@
     </section>
     -->
 
+    <!-- Ecosystem Hub Section -->
+    <section class="py-20 md:py-32 bg-dark-800 relative" id="ecosystem">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Ecossistema Soarinho</h2>
+                <p class="text-dark-300 text-lg mb-8 max-w-2xl mx-auto">Navegue por todas as áreas de atuação</p>
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto"></div>
+            </div>
+            
+            <div class="max-w-6xl mx-auto">
+                <!-- Central Hub -->
+                <div class="flex justify-center mb-12 reveal">
+                    <div class="card-effect rounded-2xl p-6 md:p-8 max-w-md text-center neon-border w-full">
+                        <div class="text-5xl text-dark-200 mb-4 animate-float">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">Hub Central</h3>
+                        <p class="text-dark-300 mb-4">Navegue por todo o ecossistema</p>
+                        <a href="https://soarinho.com" class="text-dark-200 hover:text-white font-medium transition-colors text-base inline-flex items-center gap-2 group">
+                            soarinho.com
+                            <i class="fas fa-external-link-alt group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Services Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+                    <a href="https://voz.soarinho.com" class="reveal">
+                        <div class="card-effect rounded-xl p-4 text-center neon-border">
+                            <div class="text-3xl text-dark-200 mb-3"><i class="fas fa-microphone-alt"></i></div>
+                            <h4 class="text-sm font-bold text-white mb-1">Voz</h4>
+                            <p class="text-xs text-dark-400">voz.soarinho.com</p>
+                        </div>
+                    </a>
+                    <a href="https://musica.soarinho.com" class="reveal">
+                        <div class="card-effect rounded-xl p-4 text-center neon-border">
+                            <div class="text-3xl text-dark-200 mb-3"><i class="fas fa-music"></i></div>
+                            <h4 class="text-sm font-bold text-white mb-1">Música</h4>
+                            <p class="text-xs text-dark-400">musica.soarinho.com</p>
+                        </div>
+                    </a>
+                    <a href="https://edicao.soarinho.com" class="reveal">
+                        <div class="card-effect rounded-xl p-4 text-center neon-border">
+                            <div class="text-3xl text-dark-200 mb-3"><i class="fas fa-video"></i></div>
+                            <h4 class="text-sm font-bold text-white mb-1">Edição</h4>
+                            <p class="text-xs text-dark-400">edicao.soarinho.com</p>
+                        </div>
+                    </a>
+                    <a href="https://web.soarinho.com" class="reveal">
+                        <div class="card-effect rounded-xl p-4 text-center neon-border">
+                            <div class="text-3xl text-dark-200 mb-3"><i class="fas fa-code"></i></div>
+                            <h4 class="text-sm font-bold text-white mb-1">Web</h4>
+                            <p class="text-xs text-dark-400">web.soarinho.com</p>
+                        </div>
+                    </a>
+                    <a href="https://suporte.soarinho.com" class="reveal">
+                        <div class="card-effect rounded-xl p-4 text-center neon-border">
+                            <div class="text-3xl text-dark-200 mb-3"><i class="fas fa-tools"></i></div>
+                            <h4 class="text-sm font-bold text-white mb-1">Suporte</h4>
+                            <p class="text-xs text-dark-400">suporte.soarinho.com</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section class="py-20 md:py-32 bg-dark-900 relative" id="contact">
         <div class="container mx-auto px-4">
@@ -468,7 +535,7 @@
             
             <div class="max-w-3xl mx-auto reveal">
                 <div class="card-effect rounded-3xl p-8 md:p-12">
-                    <form id="contactForm" class="space-y-6">
+                    <form id="contactForm" class="space-y-6" action="mailto:contato@soarinho.com" method="post" enctype="text/plain">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <input type="text" class="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg focus:outline-none focus:border-white transition-all text-white placeholder-dark-400" placeholder="Seu nome" required>
@@ -511,8 +578,8 @@
             <div class="flex flex-col md:flex-row justify-between items-center mb-8">
                 <div class="mb-4 md:mb-0 text-center md:text-left">
                     <div class="flex items-center gap-2 mb-2">
-                        <img src="../marca-soarinho.png" alt="Marca Soarinho" class="h-6 w-auto opacity-80">
-                        <img src="../logo-soarinho.png" alt="Soarinho" class="h-8 w-auto">
+                        <img src="https://soarinho.com/identity/marca-soarinho.png" alt="Marca Soarinho" class="h-6 w-auto opacity-80">
+                        <img src="https://soarinho.com/identity/logo-soarinho.png" alt="Soarinho" class="h-8 w-auto">
                     </div>
                 </div>
                 <div class="flex space-x-4 mb-4 md:mb-0">
