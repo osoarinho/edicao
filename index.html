@@ -36,6 +36,8 @@
                         'glow': 'glow 2s ease-in-out infinite alternate',
                         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
                         'shimmer': 'shimmer 3s linear infinite',
+                        'slide-bg': 'slide-bg 20s linear infinite',
+                        'pulse-glow': 'pulse-glow 8s ease-in-out infinite',
                     },
                     keyframes: {
                         float: {
@@ -53,6 +55,14 @@
                         shimmer: {
                             '0%': { backgroundPosition: '-1000px 0' },
                             '100%': { backgroundPosition: '1000px 0' },
+                        },
+                        'slide-bg': {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(100px)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+                            '50%': { opacity: '0.6', transform: 'scale(1.1)' },
                         }
                     }
                 }
@@ -99,16 +109,18 @@
         }
         
         .btn-primary {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #ffffff !important;
             transition: all 0.3s ease;
         }
         
         .btn-primary:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.6);
+            color: #ffffff !important;
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
         }
         
         .btn-outline {
@@ -169,7 +181,7 @@
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center">
                 <a href="#" class="flex items-center">
-                    <img src="https://soarinho.com/identity/logo-soarinho.png" alt="Soarinho" class="h-12 md:h-16 w-auto">
+                    <img src="https://soarinho.com/identity/logo-soarinho.png" alt="Soarinho" class="h-16 md:h-24 lg:h-28 w-auto">
                 </a>
                 <button id="mobile-menu-btn" class="md:hidden text-white">
                     <i class="fas fa-bars text-xl"></i>
@@ -195,6 +207,9 @@
                         Contato
                         <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                     </a>
+                    <a href="https://soarinho.com" class="text-gray-500 hover:text-gray-300 transition-colors text-xs opacity-60 hover:opacity-100" title="Hub Central">
+                        <i class="fas fa-home"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -207,6 +222,7 @@
                     <a href="#services" class="text-dark-200 hover:text-white transition-colors font-medium py-2">Serviços</a>
                     <!-- <a href="#testimonials" class="text-dark-200 hover:text-white transition-colors font-medium py-2">Depoimentos</a> -->
                     <a href="#contact" class="text-dark-200 hover:text-white transition-colors font-medium py-2">Contato</a>
+                    <a href="https://soarinho.com" class="text-gray-500 hover:text-gray-300 transition-colors text-sm py-2">Hub Central</a>
                 </div>
             </div>
         </div>
@@ -216,6 +232,9 @@
     <section class="hero min-h-screen flex items-center justify-center relative overflow-hidden pt-20" id="home">
         <div class="absolute inset-0 bg-gradient-to-br from-dark-800 via-dark-900 to-dark-900 z-0">
             <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(255,255,255,0.05)_0%,transparent_50%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.03)_0%,transparent_50%)]"></div>
+            <!-- Animated Video Editing Background -->
+            <div class="absolute inset-0 opacity-20" style="background: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,255,255,0.02) 2px, rgba(255,255,255,0.02) 4px); animation: slide-bg 20s linear infinite;"></div>
+            <div class="absolute inset-0" style="background: radial-gradient(circle at 50% 50%, rgba(255,100,100,0.1) 0%, transparent 70%); animation: pulse-glow 8s ease-in-out infinite;"></div>
         </div>
         
         <div class="container mx-auto px-4 z-10 relative">
@@ -433,19 +452,13 @@
             </div>
             
             <div class="max-w-6xl mx-auto">
-                <!-- Central Hub -->
-                <div class="flex justify-center mb-12 reveal">
-                    <div class="card-effect rounded-2xl p-6 md:p-8 max-w-md text-center neon-border w-full">
-                        <div class="text-5xl text-dark-200 mb-4 animate-float">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold text-white mb-3">Hub Central</h3>
-                        <p class="text-dark-300 mb-4">Navegue por todo o ecossistema</p>
-                        <a href="https://soarinho.com" class="text-dark-200 hover:text-white font-medium transition-colors text-base inline-flex items-center gap-2 group">
-                            soarinho.com
-                            <i class="fas fa-external-link-alt group-hover:translate-x-1 transition-transform"></i>
-                        </a>
-                    </div>
+                <!-- Central Hub - Sutil -->
+                <div class="flex justify-center mb-8 reveal">
+                    <a href="https://soarinho.com" class="text-gray-400 hover:text-white font-medium transition-colors text-sm inline-flex items-center gap-2 group opacity-60 hover:opacity-100">
+                        <i class="fas fa-home text-xs"></i>
+                        <span>soarinho.com</span>
+                        <i class="fas fa-external-link-alt text-xs group-hover:translate-x-1 transition-transform"></i>
+                    </a>
                 </div>
                 
                 <!-- Services Grid -->
@@ -547,7 +560,7 @@
             <div class="flex flex-col md:flex-row justify-between items-center mb-8">
                 <div class="mb-4 md:mb-0 text-center md:text-left">
                     <div class="flex items-center mb-2">
-                        <img src="https://soarinho.com/identity/marca-soarinho.png" alt="Marca Soarinho" class="h-16 md:h-20 w-auto">
+                        <img src="https://soarinho.com/identity/marca-soarinho.png" alt="Marca Soarinho" class="h-24 md:h-32 lg:h-36 w-auto">
                     </div>
                 </div>
                 <div class="flex space-x-4 mb-4 md:mb-0">
