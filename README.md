@@ -1,6 +1,6 @@
-# Soarinho Edição
+# Edição
 
-Site do serviço de edição e produção audiovisual.
+Site do serviço de edição e produção audiovisual oferecido por Soarinho.
 
 ## 🌐 Acesso
 
