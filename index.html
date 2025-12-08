@@ -30,8 +30,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Elfsight Google Reviews -->
-    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <!-- Google Reviews - Custom Implementation -->
     <script>
         tailwind.config = {
             theme: {
@@ -533,6 +532,82 @@
             transform: scale(1.1);
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
         }
+        /* Google Reviews Styles */
+        .google-review-card {
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .google-review-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .google-review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .google-review-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .google-review-author {
+            flex: 1;
+        }
+        
+        .google-review-author-name {
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.25rem;
+        }
+        
+        .google-review-stars {
+            color: #fbbf24;
+            font-size: 0.875rem;
+        }
+        
+        .google-review-text {
+            color: #d1d5db;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .google-review-time {
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+        
+        body.light-theme .google-review-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        body.light-theme .google-review-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        body.light-theme .google-review-author-name {
+            color: #0a0a0a;
+        }
+        
+        body.light-theme .google-review-text {
+            color: #404040;
+        }
+        
+        body.light-theme .google-review-time {
+            color: #707070;
+        }
     </style>
 </head>
 <body class="bg-dark-900 text-white font-inter overflow-x-hidden">
@@ -752,9 +827,16 @@
             </div>
             
             <div class="max-w-7xl mx-auto">
-                <!-- Elfsight Google Reviews Widget -->
-                <div>
-                    <div class="elfsight-app-c85a5979-e427-4d08-9d3a-647b2e14c648" data-elfsight-app-lazy></div>
+                <!-- Google Reviews Container -->
+                <div id="google-reviews-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Reviews will be loaded here -->
+                </div>
+                <div id="google-reviews-loading" class="text-center py-12">
+                    <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+                    <p class="text-gray-400 mt-4">Carregando avaliações...</p>
+                </div>
+                <div id="google-reviews-error" class="text-center py-12 hidden">
+                    <p class="text-gray-400">Não foi possível carregar as avaliações no momento.</p>
                 </div>
             </div>
         </div>
@@ -1079,6 +1161,61 @@
                 cursorDot.style.left = e.clientX + 'px';
                 cursorDot.style.top = e.clientY + 'px';
             });
+        }
+        
+        // Google Reviews Loader
+        async function loadGoogleReviews() {
+            const container = document.getElementById('google-reviews-container');
+            const loading = document.getElementById('google-reviews-loading');
+            const error = document.getElementById('google-reviews-error');
+            
+            if (!container) return;
+            
+            try {
+                const response = await fetch('https://soarinho.com/api/google-reviews-endpoint.php');
+                const data = await response.json();
+                
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                
+                if (loading) loading.style.display = 'none';
+                container.innerHTML = '';
+                
+                if (data.reviews && data.reviews.length > 0) {
+                    data.reviews.forEach(review => {
+                        const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+                        const reviewCard = document.createElement('div');
+                        reviewCard.className = 'google-review-card reveal';
+                        reviewCard.innerHTML = `
+                            <div class="google-review-header">
+                                <img src="${review.profile_photo_url || 'https://via.placeholder.com/48'}" 
+                                     alt="${review.author_name}" 
+                                     class="google-review-avatar"
+                                     onerror="this.src='https://via.placeholder.com/48'">
+                                <div class="google-review-author">
+                                    <div class="google-review-author-name">${review.author_name}</div>
+                                    <div class="google-review-stars">${stars}</div>
+                                </div>
+                            </div>
+                            <div class="google-review-text">${review.text}</div>
+                            <div class="google-review-time">${review.relative_time_description}</div>
+                        `;
+                        container.appendChild(reviewCard);
+                    });
+                } else {
+                    if (error) error.style.display = 'block';
+                }
+            } catch (err) {
+                console.error('Error loading reviews:', err);
+                if (loading) loading.style.display = 'none';
+                if (error) error.style.display = 'block';
+            }
+        }
+        
+        // Load reviews when page loads
+        if (document.getElementById('google-reviews-container')) {
+            loadGoogleReviews();
         }
     </script>
 </body>
